@@ -30,3 +30,13 @@ func TestLockCmpxchg8(t *testing.T) {
 	t.Log(LockCmpxchg8(&v, 1, 2))
 	t.Log(v)
 }
+
+func TestLockCmpxchg16B(t *testing.T) {
+	v := [2]uint64{0, 1}
+	t.Logf("%p", &v)
+	p := &v[0]
+	t.Logf("%x", *p)
+	t.Log(LockCmpxchg16B(&v[0], 2, 3, 4, 5))
+	t.Log(LockCmpxchg16B(&v[0], 0, 1, 4, 5))
+	t.Log(v)
+}

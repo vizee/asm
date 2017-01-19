@@ -15,3 +15,6 @@ func LockOr32(addr *uint32, val uint32)
 
 //go:noescape
 func LockCmpxchg8(addr *byte, cmp byte, val byte) (ok bool)
+
+//go:noescape
+func LockCmpxchg16B(addr *uint64, cmplo uint64, cmphi uint64, vallo uint64, valhi uint64) (ok bool)
