@@ -61,3 +61,19 @@ TEXT ·LockCmpxchg16B(SB), NOSPLIT, $0-41
 	SETEQ ok+40(FP)
 	RET
 
+// func Movoa(from *uint64, to *uint64)
+TEXT ·Movoa(SB), NOSPLIT, $0-16
+	MOVQ  from+0(FP), AX
+	MOVOA (AX), X0
+	MOVQ  to+8(FP), AX
+	MOVOA X0, (AX)
+	RET
+
+// func Movou(from *uint64, to *uint64)
+TEXT ·Movou(SB), NOSPLIT, $0-16
+	MOVQ  from+0(FP), AX
+	MOVOU (AX), X0
+	MOVQ  to+8(FP), AX
+	MOVOU X0, (AX)
+	RET
+

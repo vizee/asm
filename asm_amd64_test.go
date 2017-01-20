@@ -31,12 +31,27 @@ func TestLockCmpxchg8(t *testing.T) {
 	t.Log(v)
 }
 
-func TestLockCmpxchg16B(t *testing.T) {
+func NOTestLockCmpxchg16B(t *testing.T) {
 	v := [2]uint64{0, 1}
-	t.Logf("%p", &v)
 	p := &v[0]
 	t.Logf("%x", *p)
 	t.Log(LockCmpxchg16B(&v[0], 2, 3, 4, 5))
 	t.Log(LockCmpxchg16B(&v[0], 0, 1, 4, 5))
 	t.Log(v)
+}
+
+func NOTestMovoa(t *testing.T) {
+	v := [2]uint64{1, 2}
+	v2 := [2]uint64{3, 4}
+	Movoa(&v[0], &v2[0])
+	t.Log("v", v)
+	t.Log("v2", v2)
+}
+
+func TestMovou(t *testing.T) {
+	v := [2]uint64{1, 2}
+	v2 := [2]uint64{3, 4}
+	Movou(&v[0], &v2[0])
+	t.Log("v", v)
+	t.Log("v2", v2)
 }

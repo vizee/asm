@@ -18,3 +18,11 @@ func LockCmpxchg8(addr *byte, cmp byte, val byte) (ok bool)
 
 //go:noescape
 func LockCmpxchg16B(addr *uint64, cmplo uint64, cmphi uint64, vallo uint64, valhi uint64) (ok bool)
+
+// sse
+
+//go:noescape
+func Movoa(from *uint64, to *uint64)
+
+//go:noescape
+func Movou(from *uint64, to *uint64)
