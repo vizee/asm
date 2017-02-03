@@ -6,13 +6,9 @@ TEXT ·TLS(SB), NOSPLIT, $0-8
 	RET
 
 // func ProcPin() int
-TEXT ·ProcPin(SB), NOSPLIT, $8-8
-	CALL runtime·procPin(SB)
-	MOVQ (SP), AX
-	MOVQ AX, ret+0(FP)
-	RET
+TEXT ·ProcPin(SB), NOSPLIT, $0-0
+	JMP runtime·procPin(SB)
 
 // func ProcUnpin()
 TEXT ·ProcUnpin(SB), NOSPLIT, $0-0
-	CALL runtime·procUnpin(SB)
-	RET
+	JMP runtime·procUnpin(SB)
