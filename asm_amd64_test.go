@@ -2,6 +2,7 @@ package asm
 
 import (
 	"testing"
+	"unsafe"
 )
 
 func TestStos8(t *testing.T) {
@@ -54,4 +55,22 @@ func TestMovou(t *testing.T) {
 	Movou(&v[0], &v2[0])
 	t.Log("v", v)
 	t.Log("v2", v2)
+}
+
+func TestCPUID(t *testing.T) {
+	var s [4]uint32
+	s[0], s[1], s[2], s[3] = CPUID(0, 0)
+
+	var magic [2]uintptr
+	magic[0] = uintptr(unsafe.Pointer(&s[1]))
+	magic[1] = 12
+	t.Log(s[0], *(*string)(unsafe.Pointer(&magic)))
+}
+
+func TestRdtsc(t *testing.T) {
+	t.Log(Rdtsc())
+}
+
+func TestRdtscp(t *testing.T) {
+	t.Log(Rdtscp())
 }

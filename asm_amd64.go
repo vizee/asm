@@ -26,3 +26,11 @@ func Movoa(from *uint64, to *uint64)
 
 //go:noescape
 func Movou(from *uint64, to *uint64)
+
+// misc
+
+func CPUID(ax uint32, cx uint32) (a uint32, b uint32, d uint32, c uint32)
+
+func Rdtsc() int64
+
+func Rdtscp() (tsc int64, cpuid uint32)
