@@ -6,6 +6,10 @@ import (
 	"testing"
 )
 
+func TestTLS(t *testing.T) {
+	t.Log(TLS())
+}
+
 func TestProcPin(t *testing.T) {
 	if runtime.NumCPU() == 1 {
 		runtime.GOMAXPROCS(2)
@@ -22,4 +26,8 @@ func TestProcPin(t *testing.T) {
 		}()
 	}
 	wg.Wait()
+}
+
+func TestNanotime(t *testing.T) {
+	t.Log(Nanotime())
 }

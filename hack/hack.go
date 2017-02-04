@@ -7,3 +7,5 @@ func TLS() uintptr
 func ProcPin() int
 
 func ProcUnpin()
+
+func Nanotime() int64
