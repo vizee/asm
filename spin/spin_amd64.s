@@ -18,8 +18,12 @@ spinwait:
 	JNZ   spinwait
 	JMP   trylock
 
-// func Wait(n uint32)
-TEXT ·Wait(SB), NOSPLIT, $0-4
+TEXT ·Wait(SB), NOSPLIT, $0-0
+	PAUSE
+	RET
+
+// func WaitN(n uint32)
+TEXT ·WaitN(SB), NOSPLIT, $0-4
 	MOVL  n+0(FP), CX
 	TESTL CX, CX
 	JZ    done

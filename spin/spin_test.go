@@ -22,7 +22,7 @@ func TestSpinWait(t *testing.T) {
 	a := time.Now()
 	t.Log("cost", a.Sub(b))
 	b = time.Now()
-	Wait(100)
+	WaitN(100)
 	a = time.Now()
 	t.Log("cost2", a.Sub(b))
 }
