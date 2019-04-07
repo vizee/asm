@@ -19,6 +19,12 @@ func TestScas64(t *testing.T) {
 	t.Log(Scas64(&arr[0], len(arr), 4))
 }
 
+func TestLockAnd32(t *testing.T) {
+	v := uint32(1)
+	LockAnd32(&v, 2)
+	t.Log(v)
+}
+
 func TestLockOr32(t *testing.T) {
 	v := uint32(1)
 	LockOr32(&v, 2)

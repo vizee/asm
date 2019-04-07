@@ -26,12 +26,22 @@ found:
 	MOVQ DX, ret+24(FP)
 	RET
 
+// func LockAnd32(addr *uint32, val uint32) uint32
+TEXT ·LockAnd32(SB), NOSPLIT, $0-20
+	MOVQ addr+0(FP), BP
+	MOVL val+8(FP), AX
+	LOCK
+	ANDL AX, (BP)
+	MOVL AX, ret+16(FP)
+	RET
+
 // func LockOr32(addr *uint32, val uint32)
-TEXT ·LockOr32(SB), NOSPLIT, $0-12
+TEXT ·LockOr32(SB), NOSPLIT, $0-20
 	MOVQ addr+0(FP), BP
 	MOVL val+8(FP), AX
 	LOCK
 	ORL  AX, (BP)
+	MOVL AX, ret+16(FP)
 	RET
 
 // func LockCmpxchg8(addr *byte, cmp byte, val byte) (ok bool)

@@ -11,7 +11,10 @@ func Scas64(addr *uint64, cnt int, v int) (ret int)
 // lock
 
 //go:noescape
-func LockOr32(addr *uint32, val uint32)
+func LockAnd32(addr *uint32, val uint32) (ret uint32)
+
+//go:noescape
+func LockOr32(addr *uint32, val uint32) (ret uint32)
 
 //go:noescape
 func LockCmpxchg8(addr *byte, cmp byte, val byte) (ok bool)
