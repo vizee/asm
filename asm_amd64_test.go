@@ -21,7 +21,7 @@ func TestScas64(t *testing.T) {
 
 func TestLockAnd32(t *testing.T) {
 	v := uint32(1)
-	LockAnd32(&v, 2)
+	t.Log("1&2 =>", LockAnd32(&v, 2))
 	t.Log(v)
 }
 
